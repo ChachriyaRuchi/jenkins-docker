@@ -20,11 +20,13 @@ pipeline{
             }
 
     }
-       stage("Deploy to Container"){
-            steps{
-                deploy adapters: [tomcat9(credentialsId: 'tomcat-pwd', path: '', url: 'http://localhost:9090/')], contextPath: 'jenkinsCiCd', war: '**/*.war'
-            }
-        }
+        stage("Build Image"){
+                   steps{
+                       script{
+                           bat 'docker build -t ruchichachriya/spring-cicd:1.0 .'
+                       }
+                   }
+               }
 
 
 
