@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("SCM checkout"){
             steps{
-              checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ChachriyaRuchi/jenkins-ci-cd.git']])
+              checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ChachriyaRuchi/jenkins-docker.git']])
             }
 
         }
