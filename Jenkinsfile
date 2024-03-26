@@ -27,9 +27,15 @@ pipeline{
                        }
                    }
                }
-
-
-
+        stage("Deploy Image to Hub"){
+                    steps{
+                      withCredentials([string(credentialsId: 'cid', variable: 'cid')]) {
+                       bat 'docker login -u ruchichachriya -p ${cid}'
+                     //  bat 'docker tag spring-cicd:1.0 ruchichachriya/spring-cicd:1.0'
+                       bat 'docker push ruchichachriya/spring-cicd:1.0'
+                         }
+                    }
+                }
     }
      post{
         always{
